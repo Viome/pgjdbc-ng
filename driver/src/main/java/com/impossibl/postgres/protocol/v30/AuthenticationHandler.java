@@ -106,10 +106,8 @@ abstract class AuthenticationHandler implements StartupRequest.CompletionHandler
   @Override
   public ByteBuf authenticateSASL(List<String> mechanisms) throws IOException {
     SslHandler sslHandler = (SslHandler) channel.pipeline().get("ssl");
-    boolean clientSupportsChannelBinding = sslHandler != null &&
-        sslHandler.engine().getSession().getPeerCertificates() != null &&
-        sslHandler.engine().getSession().getPeerCertificates().length > 0;
-
+    // NOT SUPPORTED BY AZURE
+    boolean clientSupportsChannelBinding = false;
     ScramSessionFactory scramSessionFactory;
     try {
       scramSessionFactory =

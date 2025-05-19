@@ -57,8 +57,9 @@ import javax.crypto.spec.SecretKeySpec;
 public enum ScramMechanisms implements ScramMechanism {
   SCRAM_SHA_1("SHA-1", "SHA-1", 160, "HmacSHA1", false),
   SCRAM_SHA_1_PLUS("SHA-1", "SHA-1", 160, "HmacSHA1", true),
-  SCRAM_SHA_256("SHA-256", "SHA-256", 256, "HmacSHA256", false),
-  SCRAM_SHA_256_PLUS("SHA-256", "SHA-256", 256, "HmacSHA256", true);
+  SCRAM_SHA_256("SHA-256", "SHA-256", 256, "HmacSHA256", false);
+  // NOT SUPPORTED BY AZURE
+  // SCRAM_SHA_256_PLUS("SHA-256", "SHA-256", 256, "HmacSHA256", true);
 
   private static final String NAME_PREFIX = "SCRAM-";
   private static final String CHANNEL_BINDING_SUFFIX = "-PLUS";
