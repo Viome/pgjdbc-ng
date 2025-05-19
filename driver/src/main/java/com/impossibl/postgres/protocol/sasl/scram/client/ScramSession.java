@@ -94,23 +94,8 @@ public class ScramSession {
    * @return The message
    */
   public byte[] clientFirstMessage(String authzid) {
-
-    Gs2CbindFlag gs2CbindFlag;
-    if (channelBindMethod != null) {
-      if (scramMechanism.requiresChannelBinding()) {
-        gs2CbindFlag = Gs2CbindFlag.ENABLED;
-      }
-      else {
-        gs2CbindFlag = serverSupportsChannelBinding ? Gs2CbindFlag.DISABLED : Gs2CbindFlag.NO_SERVER_SUPPORT;
-      }
-    }
-    else {
-      gs2CbindFlag = Gs2CbindFlag.DISABLED;
-    }
-
-    String channelBindMethod = gs2CbindFlag == Gs2CbindFlag.ENABLED ? this.channelBindMethod : null;
-
-    this.clientFirstMessage = new ClientFirstMessage(gs2CbindFlag, authzid, channelBindMethod, user, nonce);
+    // NOT SUPPORTED BY AZURE
+    this.clientFirstMessage = new ClientFirstMessage(Gs2CbindFlag.DISABLED, authzid, null, user, nonce);
 
     return clientFirstMessage.toString().getBytes(UTF_8);
   }
